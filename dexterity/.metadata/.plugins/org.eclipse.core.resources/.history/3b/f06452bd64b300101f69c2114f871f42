@@ -1,0 +1,34 @@
+package com.panda;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+
+public class Sprite {
+
+	private Bitmap image;
+	private int framewidth;
+	private int frameheight;
+	int fnu;
+	/*private int x=120;
+	private int y=200;*/
+	public void setFrameNumber(int fnum){
+		this.fnu=fnum;
+	}
+	public Sprite(Bitmap image,int framewidth,int frameheight){
+		this.framewidth=framewidth;
+		this.frameheight=frameheight;
+		this.image=image;
+	}
+	public void draw(Canvas canvas)
+	{
+		Paint paint=new Paint();
+		Rect srcRect=new Rect((framewidth*fnu),0,((framewidth*fnu)+framewidth),frameheight);
+		RectF destRect=new RectF(120,120,120+framewidth,200+frameheight);
+		canvas.drawBitmap(image,srcRect,destRect,paint);
+		
+	}
+}
+

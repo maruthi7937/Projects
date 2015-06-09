@@ -1,0 +1,9 @@
+			$sql = "GRANT SELECT ON DBNAME TO '$username'@'%'";
+			if(!mysqli_query($con,$sql))
+			{
+				die('Error: ' . mysqli_error($con));
+			}
+			else
+			{
+				echo "<h2 align='center'>User ".$firstname." granted select previlage</h1>";
+			}

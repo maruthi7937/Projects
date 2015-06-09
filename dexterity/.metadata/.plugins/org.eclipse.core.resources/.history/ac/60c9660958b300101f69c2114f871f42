@@ -1,0 +1,24 @@
+package com.panda;
+
+import android.graphics.Canvas;
+import android.view.SurfaceHolder;
+
+public class GameThread extends Thread {
+	Panda gameview;
+	SurfaceHolder surfaceholder;
+    public GameThread(Panda view,SurfaceHolder holder){
+    gameview=view;
+    surfaceholder=holder;
+}
+	
+	public void run(){
+		for(int i=0;i<200;i++){
+		Canvas c= surfaceholder.lockCanvas();
+		gameview.onDraw(c);
+		surfaceholder.unlockCanvasAndPost(c);
+	}
+}
+	
+}
+
+

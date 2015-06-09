@@ -1,0 +1,256 @@
+/*Css for housing website*/
+#wrapper {
+		   margin-left: auto;
+		   margin-right: auto;}
+/*styling for body*/
+body 
+{
+	background: #FFFFFF ;
+}
+/* styling for header section*/
+#header {
+	width:1082px;
+	left:110px;
+	height : 150px;
+	margin : 0 auto;
+	position:absolute;
+	padding:10px;
+	background: #87CEEB;
+}
+/*styling for site logo*/
+#header_img {
+	float: right;
+	width: 288px;
+	height: 150px;
+	background-image:url('logo.png');
+}
+/*styling for contact info on header right side*/
+#contact{
+float: right;
+/*background-image:url('logo2.png');*/
+height:150px;
+color: #FFFFFF;
+}
+/*styling for header text*/
+#headertext h1{
+	padding: 0px 50px 0px 0px;
+	letter-spacing: -2px;
+	text-align: left;
+	font-size: 45px;
+	color: #000000;
+	font-weight: normal;
+	font-family:"Arial Black", Gadget, sans-serif;	
+}
+/*styling for menu */
+#dd {
+  	padding: 155px 10px 0px 60px;
+ 	float:left;
+}
+
+#dd li {
+  margin: 1px;
+  list-style: none;
+  float: left;
+  font: bold 40px times;
+}
+
+#dd li a.menu {
+  display:block;
+  margin: 0 1px 10px 0;
+  width: 0px;
+  text-decoration: none;
+  height: 10px;
+  margin-right: 1px;
+  padding: 5px 161px 20px 20px;
+  background: #BDB76B ;
+  font-size: 20px;
+  color:#000;
+}
+/*styling in menu on mouse hover to change background color */
+#dd li a.menu:hover {
+  background: #DCDCDC ;
+}
+/*styling for dropdown list*/
+.submenu {
+  background: #BDB76B;
+  visibility: hidden;
+  position: absolute;
+  z-index: 3;
+}
+
+.submenu a {
+  display: block;
+  font: 14px arial;
+  text-align: left;
+  text-decoration: none;
+  padding: 10px;
+  color: #000000;
+}
+
+.submenu a:hover {
+  background:#87CEEB;
+  color: #000000;
+}
+/*styling for center page which has main content*/
+#center_page{
+	top:255px;
+	width:1082px;
+	left:110px;
+	height: 630px;
+	margin : 0 auto;
+	position:absolute;
+	border:1px solid #FFF;
+	padding:10px;
+	background: #DCDCDC;
+}
+/*styling for text in center page*/ 
+.center_page_text h1{
+	padding: 0px 0px 0px 0px;
+	letter-spacing: 1px;
+	text-align:left;
+	font-size: 40px;
+	color:#0000FF;
+	font-weight: normal;
+	font-family:"times", Gadget, sans-serif;	
+}
+.center_page_text h2{
+	padding: 0px 0px 0px 0px;
+	letter-spacing: 1px;
+	text-align:left;
+	font-size: 30px;
+	color:#FA8072;
+	font-weight: normal;
+	font-family:"times", Gadget, sans-serif;	
+}
+.center_page_text h5{
+	padding: 0px 0px 0px 400px;
+	letter-spacing: 1px;
+	text-align:left;
+	font-size: 20px;
+	color:#0000FF;
+	font-weight: normal;
+	font-family:"times", Gadget, sans-serif;	
+}
+
+dl {
+padding:0px 0px 0px 230px;
+}
+/* styling for media*/
+video{
+padding: 10px 0px 0px 60px;
+}
+/*styling for table elements*/
+table{
+border-collapse: collapse;
+border: 1px solid black;
+padding:0px 0px 0px 300px;
+}
+ table td{
+    border: 1px solid black;
+  }
+  table th{
+    border: 1px solid black;
+  }
+  /*Styling for bottom section of a page*/
+#bottom_division{
+	top : 910px;
+	padding-bottom:20px;
+	width:1082px;
+	left:110px;
+	height : 120px;
+	margin : 0 auto;
+	position:absolute;
+	border:1px solid #FFF;
+	padding:10px;
+	background:#BDB76B;
+}
+/*styling for text in bottom section*/
+.bottom_division_text h2{
+	padding: 0px 0px 0px 0px;
+	letter-spacing: 1px;
+	text-align:left;
+	font-size: 18px;
+	color:#FFFFFF;
+	font-weight: normal;
+	font-family:"times", Gadget, sans-serif;	
+}
+.bottom_division_text h3{
+	padding: 0px 0px 0px 0px;
+	letter-spacing: 1px;
+	text-align:right;
+	font-size: 18px;
+	color:#000000;
+	font-weight: normal;
+	font-family:"times", Gadget, sans-serif;	
+}
+.leftalign {text-align:left;
+            float: left;}
+			
+.rightalign {text-align: right;
+             float: right;
+			 }
+/* styling for form elements*/			 
+form		{	width:485px;
+				float:left;	
+				font-family:"Times New Roman", Times, serif;
+				color:#2c2c2c;
+				margin: 25px 0px 25px 25px;
+				padding:5px;
+				overflow:hidden;	
+				background: #F5F5DC;
+				box-shadow: 15px 15px 15px #778899;
+				border-radius: 15px;
+				-moz-border-radius: 15px;
+    			-webkit-border-radius: 15px;
+				-o-border-radius: 15px;
+			}
+			
+form h1		{	font-family: Questrial, sans serif;
+				font-size: 2em;
+				text-align: center;
+			}
+				
+
+input, textarea {		width:250px;
+    					height:25px;
+    					background: #FFFFFF;
+    					padding:3px;
+    					margin-top:3px;
+    					font-size:0.8em;
+						border-radius:5px;
+    					-moz-border-radius:5px;
+    					-webkit-border-radius:5px;
+						font-family:inherited;
+					}
+textarea 			{	height:50px;
+					}
+
+section input {		width:50px;
+    					height:16px;
+    					background: #FFFFFF;
+    					padding:10px;
+    					margin-top:3px;
+    					font-size:0.9em;
+						border-radius:5px;
+    					-moz-border-radius:5px;
+    					-webkit-border-radius:5px;
+						-o-border-radius: 5px;
+						font-family:inherited;
+				}
+
+
+input[type="radio"] 	{		margin: 2px 0;
+								text-align: left;
+						}
+
+button { border: 1px solid;
+		border-radius: 25px;
+		border-color: #000000;
+		background: #7B68EE;
+		color: #FFFFFF;
+		float:right;}
+
+ footer p	{	font-family:EB Garamond, sans serif;
+		  		font-size: .80em;
+				text-align: center;
+			}

@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Apply Page</title>	
+<link rel="stylesheet" type="text/css" href="css/donthi.css"/>
+<link rel="stylesheet" type="text/css" href="css/slider.css"/>
+<script src="javaScript.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="js/jquery.flexslider-min.js"></script>
+</head> 
+
+<!--Start of Body -->
+
+<body>
+<!-- Apply page starts here-->
+<blockquote>
+<div id="wrapper">
+<!-- header part starts here-->
+	<div id="header">
+			<div id="header_img">
+			<div id="contact" class="rightalign">
+			<h2>Contact Us</h2>
+			
+			Phone: (203) 218-6949<br />
+			Fax: (573) 289-1751<br />
+			Email: mdc6d@mail.missouri.edu.
+			</div>
+		    </div>
+			<div id= "headertext">
+				<h1>UNIVERSITY HOUSING </h1>
+			</div>
+	</div>
+	<!-- header ends here-->
+	<!--menu starts here-->
+	<ul id="dd">
+  		<li> 
+  		 <a href="index.html" class="menu">HOME</a>
+  		</li>
+      <li>        
+      <li><a href="#" class="menu"  onmouseover="mopen(1);"    onmouseout="mclosetime();">APARTMENTS</a>
+				<div class="submenu" id="menu1"      onmouseover="mcancelclosetime()"      onmouseout="mclosetime();">
+        		<a href="single.html">1BR / 2 Person</a>
+        		<a href="2br.html">2BR / 4 Person</a>
+        		<a href="3br.html">3BR / 3 Person</a>
+                    		</div>	</li>
+				<li><a href="rates.html" class="menu">RATES</a></li>
+             <li><a href="apply.html" class="menu">APPLY</a></li>
+              <li><a href="policies.html" class="menu">POLICIES</a></li>
+			  <li><a href="contact.html" class="menu">CONTACT</a></li>
+
+	</ul>
+    <!-- menu ends here-->
+	<!-- main content of page starts here-->
+	<div id="center_page">
+    
+	<!-- code for form elements -->
+ <div class="form">
+    <form name="testForm" method="get" onsubmit="myFunction()">
+        <h1>Application for Lease</h1>
+        <!--Text Fields-->
+        <p><label for="name">Name:</label>
+        <input type="text" id="name" required="required" name="name" value="" /></p>
+         <p><label for="email">E-Mail:</label> 
+        <input type="text" id="email" required="required" name="email" value="" /></p>
+        <p>Gender</p>
+        <!--Radio Button-->
+        <section>
+        <p> 
+			<input type="radio" required = "required" name="sex" value="Male">Male<br />
+			<input type="radio" required = "required" name="sex" value="Female">Female<br />
+        </p>
+        </section>
+        
+        <!--Radio Button-->
+        <section>
+        <p>I am Interested In:</p>
+        <input type="checkbox"  name="checkbox2" value="2BR2" id="2BR2" /> 1BR/2 person <br />
+         <input type="checkbox"  name="checkbox3" value="2BR4" id="2BR4" /> 2BR/4 person<br />
+         <input type="checkbox"  name="checkbox4" value="3BR" /> 3BR <br />
+         </section>
+        
+        <!--List Menu-->
+        <p><label for="list">Prefered Room mate:</label> 
+            <select name="list" id="list">
+                <option value="firstOption">Indian</option>
+                <option value="secondOption">American</option>
+                <option value="thirdOption">Chinese</option>
+                <option value="fourthOption">No Preference</option>
+            </select>
+        </p> 
+        
+        <!--Text Area-->
+        <p><label for="request">Special Requests:</label> 
+        <br />
+        <textarea id="request" name="request" placeholder="Enter special requirements here."></textarea></p>      
+        
+        <!--Button-->
+        <p><button id="apply" type="submit">Apply Now</button></p>
+
+        </form>
+</div>
+<!-- form ends here -->
+
+	</div><!-- center page ends -->
+	<!-- footer starts here -->
+<div id="bottom_division" class="bottom_division_text">
+	<h3 class="rightalign">
+            	OFFICE HOURS<br />
+				MONDAY- FRIDAY<br />
+				10AM - Noon<br />
+				1PM - 5PM
+    </h3>  
+	  <h2 class="leftalign">
+			HELPFUL LINKS <br />
+            	<a href="video.html">Videos</a><br />
+				<a href="payrent.html">PayRent</a>
+    </h2>
+	<footer>
+	<p><strong> Photo slider code used, can found at<a href="http://designmodo.com/responsive-slider/">Designmodo.com</a></strong></p>
+	<p><strong>&copy; Ajax code is partially used form
+<a href="http://demo.w3bees.com/jquery-ajax-form-submit/">W3 bees</a>.</strong></p>
+			<p>
+            <strong>Copyright &copy; 2014 Maruthi Donthi All Rights Reserved</strong>
+				<br />
+				<!--mailto Hyperlink-->
+				Contact: 
+				<a href="mailto:mdc6d@mail.missouri.edu">mdc6d@mail.missouri.edu</a>
+				<br />
+			</p>
+      
+</footer> 
+</div>
+</div>
+</blockquote>
+</body>
+</html>

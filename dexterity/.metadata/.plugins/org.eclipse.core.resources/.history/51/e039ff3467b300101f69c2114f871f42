@@ -1,0 +1,94 @@
+package com.game;
+
+import java.util.Random;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+
+public class GameView extends SurfaceView implements Callback {
+
+	SurfaceHolder holder;
+	int fn, birdX = 200, birdY = 200, scrw, scrh;
+	Paint paint;
+	Sprite sp ;
+
+	public GameView(Context context) {
+		super(context);
+		holder = getHolder();
+		paint = new Paint();
+		Bitmap image = BitmapFactory.decodeResource(getResources(),
+				R.drawable.bird);
+		sp = new Sprite(image, 155, 125);
+		holder.addCallback(this);
+	}
+
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void surfaceCreated(SurfaceHolder holder) {
+
+		// TODO Auto-generated method stub
+		/*
+		 * Canvas canvas=new Canvas(); onDraw(canvas);
+		 */
+		// System.out.println("surface created..........");
+		Draw thread = new Draw(this, this.holder);
+		thread.start();
+
+	}
+
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		scrw = canvas.getWidth();
+		scrh = canvas.getHeight();
+		
+		canvas.drawColor(Color.WHITE);
+		/*
+		 * paint.setColor(Color.GRAY);
+		 * canvas.drawText("hello this is my first drawing", 40, 50, paint);
+		 * 
+		 * paint.setColor(Color.GREEN); paint.setTextSize(20);
+		 * canvas.drawText("hello this is my first drawing", 40, 80, paint);
+		 * paint.setColor(Color.BLUE);
+		 * canvas.drawText("hello this is my first drawing", 40, 100, paint);
+		 * paint.setColor(Color.RED);
+		 * canvas.drawText("hello this is my first drawing", 40, 120, paint);
+		 * paint.setColor(Color.BLACK); canvas.drawCircle(18, 18, 8, paint);
+		 * x=x+3; if(fn<3){fn++;} else{ fn=0; }
+		 */
+
+		System.out.println("in draw game view......");
+		
+		
+		Random r = new Random();
+		int a=(int)r.nextInt(scrw);
+		Random s =new Random();
+		int b=(int)s.nextInt(scrh);
+		
+		birdX = a;
+		birdY = b;
+		
+		sp.setX(birdX);
+		sp.setY(birdY);
+		// sp.setFrameNumber(fn);
+		sp.draw(canvas);
+
+	}
+
+}
+

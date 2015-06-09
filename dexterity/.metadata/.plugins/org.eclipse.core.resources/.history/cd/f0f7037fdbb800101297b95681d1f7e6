@@ -1,0 +1,272 @@
+package com.panda;
+
+//import java.util.Calendar;
+
+import java.util.Calendar;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Message;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.widget.Button;
+
+public class Panda2 extends SurfaceView implements Callback {
+	SurfaceHolder holder;
+	Dialog d;
+
+	String gameStatus = "";
+	int x = 10,y = 120;
+	static int c,ht,wd;
+	AlertDialog.Builder a;
+	int magnetForce = 0;
+	int rectx = 50;
+	int rectForce;
+	Sprite sp;
+	Context context;
+	static boolean startRing;
+	int ringHeightCounter = 0;
+	int score = 0;
+	int fanWind = 0;
+	int hurraycnt=0;
+    long t1,t2;
+    Bitmap image7;
+    MediaPlayer mp;
+	public Panda2(Context context) {
+		super(context);
+		this.context = context;
+		d = new Dialog(context);
+		a = new AlertDialog.Builder(context);
+		holder = getHolder();
+		holder.addCallback(this);
+		mp=MediaPlayer.create(context, R.raw.catch1);
+		Bitmap image4 = BitmapFactory.decodeResource(getResources(),
+				R.drawable.ring);
+		sp = new Sprite(image4, 80, 50);
+		image7 = BitmapFactory.decodeResource(getResources(),
+				R.drawable.hurray1);
+	}
+
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void surfaceCreated(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		System.out.println("surface created..........");
+		GameThread thread = new GameThread(this, holder);
+		thread.start();
+	}
+
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		Paint paint = new Paint();
+		/*Bitmap image8 = BitmapFactory.decodeResource(getResources(),
+				R.drawable.back);
+		canvas.drawBitmap(image8, 0, 0, paint);*/
+		canvas.drawColor(Color.LTGRAY);
+		paint.setColor(Color.GREEN);
+		paint.setTextSize(28);
+		// canvas.drawText("hi this is jeeju ", 50, 50, paint);
+		// canvas.drawCircle(30,40,50,paint);
+		Bitmap image = BitmapFactory.decodeResource(getResources(),
+				R.drawable.mann);
+		canvas.drawBitmap(image, 20, 140, paint);
+		Bitmap image2 = BitmapFactory.decodeResource(getResources(),
+				R.drawable.poll);
+		
+		canvas.drawBitmap(image2, 240, 140, paint);
+		Bitmap image11 = BitmapFactory.decodeResource(getResources(),
+				R.drawable.mann);
+		canvas.drawBitmap(image11, 20, 140, paint);
+		Bitmap image12 = BitmapFactory.decodeResource(getResources(),
+				R.drawable.scorecopy);
+		canvas.drawBitmap(image12, 250, 350, paint);
+		//canvas.drawText("SCORE::", 170, 350, paint);
+		canvas.drawText(score + "", 270, 350, paint);
+		hurray(canvas,paint);
+
+		if (c ==10 ) {
+			if (score >= 50) {
+
+				//gameStatus = "level 1 completed";
+
+				a.setMessage("level 1 completed\n\tyour score" + score);
+				h.sendEmptyMessage(0);
+			} else {
+
+				
+
+				a.setMessage("you failed game over\n\tyour score" + score);
+				GameThread.isGameRunning = false;
+				h.sendEmptyMessage(0);
+
+				/*
+				 * Panda.setContentView(R.layout.mainn2);
+				 * 
+				 * b=(Button)findViewById(R.id.Button01);
+				 * b.setOnClickListener(this);
+				 */
+			}
+		}
+		if (c ==21) {
+			if (score >= 100) {
+
+				//gameStatus = "congrates level2 completed";
+				a.setMessage("congrates level2 completed\n\tyour score" + score);
+				h.sendEmptyMessage(0);
+
+			} else {
+
+				//gameStatus = "you failed game over";
+				a.setMessage("you failed game over\n\tyour score" + score);
+				GameThread.isGameRunning = false;
+				h.sendEmptyMessage(0);
+
+			}
+		}
+		if (c ==31) {
+			if (score >= 130) {
+
+				//gameStatus = "congrates you win";
+				a.setMessage("congrates you win\n\tyour score" + score);
+				h.sendEmptyMessage(0);
+
+				GameThread.isGameRunning = false;
+
+			} else {
+
+				
+
+				a.setMessage("you failed game over\n\tyour score" + score);
+				GameThread.isGameRunning = false;
+				h.sendEmptyMessage(0);
+			}
+		}
+		if (startRing) {
+			ring(canvas, paint);
+
+		}
+		if (!startRing) {
+			rectx = rectx + 10;
+			rectForce = rectx - 90;
+		}
+		paint.setColor(Color.RED);
+		canvas.drawRect(50, 300, rectx, 313, paint);
+		if (rectx > 200) {
+			rectx = 60;
+		}
+		paint.setColor(Color.GREEN);
+		canvas.drawText("FORCE", 1, 290, paint);
+		if (c >=12 && c <= 21) {
+			Bitmap image4 = BitmapFactory.decodeResource(getResources(),
+					R.drawable.imgg);
+			canvas.drawBitmap(image4, 140, 20, paint);
+			magnetForce = 10;
+		}
+		if (c >22) {
+			Bitmap image5 = BitmapFactory.decodeResource(getResources(),
+					R.drawable.fann);
+			canvas.drawBitmap(image5, 140, 20, paint);
+			magnetForce = 0;
+			fanWind = 10;
+		}
+	}
+
+	public void ring(Canvas canvas, Paint paint) {
+		if (ringHeightCounter < 5) {
+			if (x < 10) {
+				x = x+5;
+				y = y - 10 - magnetForce + fanWind;
+			} else {
+				x = x + rectForce - fanWind;
+				y = y - 10 - magnetForce + fanWind;
+			}
+		} else {
+			if (x < 10) {
+				x = x+5;
+				y = y + 5 - magnetForce + fanWind;
+			} else {
+				x = x + rectForce - 30 - fanWind;
+				y = y + 25 - magnetForce + fanWind;
+			}
+		}
+		if (ringHeightCounter == 11) {
+			if (x == 240) {
+				
+				score = score + 10;
+				mp.start();
+		 		Calendar rightNow = Calendar.getInstance();
+				t1=rightNow.getTimeInMillis();
+				hurray(canvas,paint);
+			}
+           startRing = false;
+			x = 10;
+			y = 120;
+			ringHeightCounter = 0;
+		}
+		System.out.println("RIngHeightCounter: " + ringHeightCounter);
+		System.out.println("X: " + x);
+		System.out.println("Y: " + y);
+		ringHeightCounter++;
+		sp.setX(x);
+		sp.setY(y);
+		sp.draw(canvas);
+	}
+
+	private void hurray(Canvas canvas,Paint paint) {
+		// TODO Auto-generated method stub
+		
+		Calendar later = Calendar.getInstance();
+		t2=later.getTimeInMillis();
+		System.out.println(t2-t1);
+		if(t2-t1<1000)
+		{
+			
+			canvas.drawBitmap(image7, 30, 60, paint);
+		}
+	}
+
+	Handler h = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			//d.setTitle(gameStatus);
+			if (!d.isShowing()) {
+				//d.show();
+				a.show();
+				c++;
+			}
+			if(GameThread.isGameRunning==false){
+				panda p = (panda)context;
+			    panda.counter=0;
+			    c=0;
+				p.setContentView(R.layout.mainn2);
+				p.b=(Button)p.findViewById(R.id.Button01); 
+    	        p.b.setOnClickListener(p);
+    	        p.b1=(Button)p.findViewById(R.id.Button02); 
+    	        p.b1.setOnClickListener(p);
+    	        p.b2=(Button)p.findViewById(R.id.Button03); 
+    	        p.b2.setOnClickListener(p);
+				
+			}
+		}
+	};
+
+}

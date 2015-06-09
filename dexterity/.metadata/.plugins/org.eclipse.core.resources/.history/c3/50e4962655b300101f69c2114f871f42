@@ -1,0 +1,48 @@
+package com.panda;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+
+public class Panda extends SurfaceView implements Callback {
+   SurfaceHolder holder;
+	public Welcome2(Context context) {
+		super(context);
+		holder=getHolder();
+		holder.addCallback(this);
+	}
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void surfaceCreated(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		System.out.println("surface created..........");
+		Gamethread thread=new Gamethread(this,holder);
+		thread.start();
+	}
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		
+	}
+@Override
+	protected void onDraw(Canvas canvas) {
+		Paint paint=new Paint();
+		canvas.drawColor(Color.WHITE);
+		paint.setColor(Color.GREEN);
+		paint.setTextSize(28);
+		canvas.drawText("hi this is jeeju ", 50, 50, paint);
+		canvas.drawCircle(30,40,50,paint);
+		 Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.icon);
+	    canvas.drawBitmap(image, 120, 120, paint);
+	  
+	}
+}
+
